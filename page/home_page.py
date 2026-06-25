@@ -12,7 +12,7 @@ class HomePage(base.Base):
     popup_hint = '//*[contains(@class,"ReactModal")]'
     search_btn = '//a[@href="/directory"]'
     search_input = '//input[@type="search"]'
-    search_related_btn = '//ul/li[1]'
+    first_search_result = '//ul/li[1]'
 
     # bottom nav
 
@@ -27,4 +27,7 @@ class HomePage(base.Base):
     @allure.step(f'{now_page}input search keyword')
     def input_search_keyword(self, keyword):
         self.find_element(self.search_input).send_keys(keyword)
-        self.find_element(self.search_related_btn).click()
+
+    @allure.step(f'{now_page}click first search result')
+    def click_first_search_result(self):
+        self.find_element(self.first_search_result).click()
